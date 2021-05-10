@@ -12,16 +12,16 @@ body {
 }
 
 .posts {
-  max-width: 70%;
+  max-width: 50%;
 }
 
 .post {
-  max-width: 500px;
-  min-width: 300px;
+  width: 100%;
   border: 1px solid rgb(231, 231, 231);
   border-radius: 2px;
   margin-top: 30px;
   background-color: white;
+  padding-bottom: 30px;
 }
 
 .post__header {
@@ -36,6 +36,11 @@ body {
   border-radius: 50%;
   margin-right: 10px;
   margin-left: 20px;
+  cursor: pointer;
+}
+
+.post .post__header h2 {
+  cursor: pointer;
 }
 
 .post img {
@@ -44,12 +49,44 @@ body {
   object-fit: cover;
 }
 
-.conatainer-description {
+.post .conatainer-description {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   margin-left: 20px;
 }
+
+.post .conatainer-description > div {
+  margin-bottom: 8px;
+}
+
+.post .conatainer-description .comments {
+  cursor: pointer;
+  color: #777;
+}
+.post .conatainer-description .tags > span {
+  cursor: pointer;
+  color: blue;
+}
+
+.modal__comment {
+  display: flex;
+  align-items: center;
+}
+
+.post__modal--img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 10px;
+  margin-left: 20px;
+}
+
+.modal__profile {
+  display: flex;
+  flex-direction: column;
+}
+
 
 .NavBar_container {
   align-items: center;

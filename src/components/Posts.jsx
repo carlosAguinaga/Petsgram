@@ -6,12 +6,20 @@ import { getPost } from "../utils/getApi";
 const Posts = () => {
 
     const [posts, setPosts] = useState([]);
+    // const getAlgo = () => {
+
+    // }
 
   useEffect(() => {
     
-    const getData = () => {
-        const data = getPost();
-        data.then(posts => setPosts(posts.data))
+    const getData = async (tagTitle) => {
+      let posts = null;
+      if (tagTitle) {
+         posts = await getPost(tagTitle);
+      }else{
+         posts = await getPost();
+      }
+        setPosts(posts.data)
     }
 
     getData();
@@ -21,7 +29,7 @@ const Posts = () => {
     <div className="posts">
       <h1>Lista de posts</h1>
       {posts.map((post) => (
-        <Post post={post} key={post.id} />
+        <Post post={post} key={post.id} setPosts={setPosts}/>
       ))}
     </div>
   );

@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDom from "react-dom";
 
-const Modal = ({ open, onClose, comments }) => {
+const ModalProfile = ({ open, onClose, owner }) => {
   const modalStyles = {
     position: "fixed",
     top: "50%",
@@ -23,22 +23,23 @@ const Modal = ({ open, onClose, comments }) => {
     zIndex: 1000,
   };
 
+  // console.log(owner);
+
   if (!open) return null;
   return ReactDom.createPortal(
     <>
       <div style={overlayStyles}>
+        <span>temporal</span>
         <div style={modalStyles}>
-          {comments &&
-            comments.data.map((comment) => (
-              <div>
-                <div className="modal__comment">
-                  <img src={comment.owner.picture} alt="" className="post__modal--img" />
-                  <span>{comment.owner.firstName}:</span>
-                  <span>{comment.message}</span>
-                </div>
-                <hr />
-              </div>
-            ))}
+          <div>
+            <div className="modal__profile">
+              <img src={owner.picture} alt="" className="post__modal--img" />
+              <span>{owner.firstName}:</span>
+              <span>{owner.lastName}:</span>
+              <span>{owner.email}</span>
+            </div>
+          </div>
+
           <button onClick={onClose}>Close model</button>
         </div>
       </div>
@@ -47,4 +48,4 @@ const Modal = ({ open, onClose, comments }) => {
   );
 };
 
-export default Modal;
+export default ModalProfile;
