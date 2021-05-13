@@ -1,0 +1,17 @@
+.modal__comment {
+    display: flex;
+    align-items: center;
+  }
+
+  .post__modal--img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+    margin-left: 20px;
+  }
+  
+  .modal__profile {
+    display: flex;
+    flex-direction: column;
+  }

@@ -1,39 +1,34 @@
 import React, { useEffect, useState } from "react";
 import Post from "./Post";
-// import { posts } from "../fakeData/data";
-import { getPost } from "../utils/getApi";
+import { getPost } from "../utils/getData";
 
 const Posts = () => {
-
-    const [posts, setPosts] = useState([]);
-    // const getAlgo = () => {
-
-    // }
+  const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    
+
     const getData = async (tagTitle) => {
       let posts = null;
       if (tagTitle) {
-         posts = await getPost(tagTitle);
-      }else{
-         posts = await getPost();
+        posts = await getPost(tagTitle);
+      } else {
+        posts = await getPost();
       }
-        setPosts(posts.data)
-    }
+      setPosts(posts.data);
+    };
 
     getData();
   }, []);
 
+
   return (
-    <div className="posts">
+    <section className="posts">
       <h1>Lista de posts</h1>
       {posts.map((post) => (
-        <Post post={post} key={post.id} setPosts={setPosts}/>
+        <Post post={post} key={post.id} setPosts={setPosts} />
       ))}
-    </div>
+    </section>
   );
 };
-
 
 export default Posts;

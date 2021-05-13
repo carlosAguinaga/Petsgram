@@ -1,15 +1,19 @@
 import "./App.css";
-import Posts from "./components/Posts";
-import Navbar from './components/Navbar';
+import "./styles/navbar.css";
+import Home from "./components/Home";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import ModalComments from './components/ModalComments'
 
 function App() {
   return (
-    <div>
-      <Navbar />
-      <div className="App">
-        <Posts />
-      </div>
-    </div>
+    <Router>
+      <Navbar/>
+      <Switch location={{pathname: '/'}}>
+        <Route exact path="/" component={Home} />
+      </Switch>
+        <Route exact path="/com/:id" component={ModalComments} />
+    </Router>
   );
 }
 

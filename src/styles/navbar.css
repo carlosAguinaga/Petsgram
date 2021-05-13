@@ -1,0 +1,17 @@
+.NavBar_container {
+    align-items: center;
+    border-bottom: 1px solid lightgray;
+    display: flex;
+    justify-content: space-around;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: white;
+  }
+  .NavBar_container .perfil_picture {
+    border-radius: 50%;
+    width: 40px;
+    padding: 1px;
+  }
+  .NavBar_container .logo {
+    width: 100px;
+  }
