@@ -1,32 +1,14 @@
 import "../styles/post.css";
 import React, { useState } from "react";
 import { FcLike } from "react-icons/fc";
-import { getPost } from "../utils/getData";
 import { Link } from "react-router-dom";
-// import ModalComments from "./ModalComments";
 import ModalProfile from "./ModalProfile";
 
 const Post = ({ post, setPosts }) => {
-  // const [comments, setComments] = useState({});
-  const [isOpen, setIsOpen] = useState(false);
   const [isOpenProfile, setIsOpenProfile] = useState(false);
-
-  // useEffect(() => {
-  //   getComments(post.id).then((res) => setComments(res));
-  // }, [post.id]);
-
-  const getPostForTag = async (tagTitle) => {
-    const posts = await getPost(tagTitle);
-    setPosts(posts.data);
-  };
 
   return (
     <article className="post">
-      {/* <ModalComments
-        open={isOpen}
-        onClose={() => setIsOpen(false)}
-        comments={comments}
-      /> */}
       <ModalProfile
         open={isOpenProfile}
         onClose={() => setIsOpenProfile(false)}
@@ -34,19 +16,20 @@ const Post = ({ post, setPosts }) => {
       />
       <div className="post__header">
         <img
+          className="post__header-img"
           src={post.owner.picture}
-          alt=""
+          alt={post.owner.firstName}
           onClick={() => {
             setIsOpenProfile(true);
           }}
         />
-        <h2
+        <h3 className="post__header-title"
           onClick={() => {
             setIsOpenProfile(true);
           }}
         >
           {post.owner.firstName}
-        </h2>
+        </h3>
       </div>
       <img src={post.image} alt="" />
       <div className="conatainer-description">
@@ -62,10 +45,7 @@ const Post = ({ post, setPosts }) => {
         </div>
         <div className="tags">
           {post.tags.map((tag, i) => (
-            <span key={i} onClick={() => getPostForTag(tag)}>
-              {" "}
-              {tag}{" "}
-            </span>
+            <Link to={`/${tag}`} key={i} className="tag">{`${tag}`}</Link>
           ))}
         </div>
         <div>
@@ -75,7 +55,7 @@ const Post = ({ post, setPosts }) => {
           <a href={post.link}>{post.link}</a>
         </div>
         <div className="comments">
-          <Link to={`/com/${post.id}`}>Comentatios</Link>
+          <Link to={`/comments/${post.id}`}>Comentatios</Link>
         </div>
       </div>
     </article>

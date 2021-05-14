@@ -1,10 +1,12 @@
 import React from 'react'
 import Posts from './Posts'
 
-const Home = () => {
+const Home = (props) => {
+
+
     return (
         <div className="home">
-            <Posts/>
+            <Posts />
         </div>
     )
 }

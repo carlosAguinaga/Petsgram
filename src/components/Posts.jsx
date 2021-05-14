@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from "react";
 import Post from "./Post";
 import { getPost } from "../utils/getData";
+import { useParams } from "react-router-dom";
 
 const Posts = () => {
   const [posts, setPosts] = useState([]);
 
-  useEffect(() => {
+  let { topic } = useParams();
 
-    const getData = async (tagTitle) => {
+  useEffect(() => {
+    const getData = async () => {
       let posts = null;
-      if (tagTitle) {
-        posts = await getPost(tagTitle);
+      if (topic) {
+        posts = await getPost(topic);
       } else {
         posts = await getPost();
       }
@@ -18,8 +20,7 @@ const Posts = () => {
     };
 
     getData();
-  }, []);
-
+  }, [topic]);
 
   return (
     <section className="posts">
