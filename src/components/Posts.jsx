@@ -26,7 +26,7 @@ const Posts = () => {
     <section className="posts">
       <h1>Lista de posts</h1>
       {posts.map((post) => (
-        <Post post={post} key={post.id} setPosts={setPosts} />
+        <Post post={post} key={post.id} />
       ))}
     </section>
   );

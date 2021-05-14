@@ -3,6 +3,7 @@
   margin-bottom: 40px;
   padding-bottom: 30px;
   background-color: white;
+  color: #222;
 }
 
 .post__header {
@@ -42,14 +43,41 @@
   margin-bottom: 8px;
 }
 
-.conatainer-description .comments {
-  cursor: pointer;
-  color: #777;
+.conatainer-description .fav-container {
+  margin-right: 16px;
 }
-.conatainer-description .tags .tag {
+
+.conatainer-description .fav-container svg{
+  margin-right: 5px;
+}
+
+.conatainer-description .text-post {
+
+}
+
+.conatainer-description .text-post .text{
+  text-align: justify;
+}
+
+.conatainer-description .text-post .author{
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+
+.conatainer-description .tags-post .tag {
   cursor: pointer;
   color: blue;
   margin-right: 10px;
+}
+
+.conatainer-description .date-post {
+  color: #444;
+}
+
+.conatainer-description .comments a {
+  color: #777;
+  text-decoration: none;
 }
 
 @media (min-width: 640px) {
