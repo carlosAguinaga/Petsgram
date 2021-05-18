@@ -10,8 +10,10 @@ export const getPost = async (tagTitle) => {
   const res = await axios.get(URL, {
     headers: { "app-id": APP_ID },
   });
+
   return res.data;
 };
+
 
 export const getComments = async (id) => {
   const res = await axios.get(`${BASE_URL}/post/${id}/comment`, {

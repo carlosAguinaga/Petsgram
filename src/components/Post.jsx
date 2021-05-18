@@ -11,7 +11,7 @@ const Post = ({ post }) => {
 
   useEffect(() => {
     getComments(post.id).then((res) => setTotalComments(res.total));
-  }, [post.id])
+  }, [post])
 
 
   return (
