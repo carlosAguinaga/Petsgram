@@ -1,43 +1,41 @@
 import "../styles/post.css";
 import React, { useEffect, useState } from "react";
 import { FcLike } from "react-icons/fc";
-import { Link } from "react-router-dom";
-import ModalProfile from "./ModalProfile";
+import { Link, useLocation } from "react-router-dom";
 import { getComments } from "../utils/getData";
 
 const Post = ({ post }) => {
-  const [isOpenProfile, setIsOpenProfile] = useState(false);
-  const [totalComments, setTotalComments] = useState('')
+  let location = useLocation();
+  const [totalComments, setTotalComments] = useState("");
 
   useEffect(() => {
     getComments(post.id).then((res) => setTotalComments(res.total));
-  }, [post])
-
+  }, [post]);
 
   return (
     <article className="post">
-      <ModalProfile
-        open={isOpenProfile}
-        onClose={() => setIsOpenProfile(false)}
-        owner={post.owner}
-      />
       <div className="post__header">
-        <img
-          className="post__header-img"
-          src={post.owner.picture}
-          alt={post.owner.firstName}
-          onClick={() => {
-            setIsOpenProfile(true);
-          }}
-        />
-        <h3
-          className="post__header-title"
-          onClick={() => {
-            setIsOpenProfile(true);
+        <Link
+          to={{
+            pathname: "/profile/user",
+            state: { background: location, owner: post.owner },
           }}
         >
-          {post.owner.firstName}
-        </h3>
+          <img
+            className="post__header-img"
+            src={post.owner.picture}
+            alt={post.owner.firstName}
+          />
+        </Link>
+
+        <Link
+          to={{
+            pathname: "/profile/user",
+            state: { background: location, owner: post.owner },
+          }}
+        >
+          <h3 className="post__header-title">{post.owner.firstName}</h3>
+        </Link>
       </div>
       <img src={post.image} alt="" />
       <div className="conatainer-description">
@@ -47,9 +45,7 @@ const Post = ({ post }) => {
         </div>
         <div className="text-post">
           <p className="text">
-          <span className="author">
-            {post.owner.firstName}
-          </span>
+            <span className="author">{post.owner.firstName}</span>
             {post.text}
           </p>
         </div>
@@ -65,7 +61,12 @@ const Post = ({ post }) => {
           <a href={post.link}>{post.link}</a>
         </div>
         <div className="comments">
-          <Link to={`/comments/${post.id}`}>{`${totalComments} Comentatios`}</Link>
+          <Link
+            to={{
+              pathname: `/comments/${post.id}`,
+              state: { background: location },
+            }}
+          >{`${totalComments} Comentatios`}</Link>
         </div>
       </div>
     </article>

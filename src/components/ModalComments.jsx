@@ -3,9 +3,10 @@ import ReactDom from "react-dom";
 import { useParams } from "react-router";
 import { getComments } from "../utils/getData";
 import "../styles/modalComments.css"
+import { useHistory } from "react-router-dom";
 
 
-const ModalComments = ({history}) => {
+const ModalComments = () => {
   const modalStyles = {
     position: "fixed",
     top: "50%",
@@ -27,13 +28,24 @@ const ModalComments = ({history}) => {
     zIndex: 1000,
   };
 
+  const history = useHistory()
+  const back = e => {
+    e.stopPropagation();
+    history.goBack()
+  }
+
 
   let { id } = useParams();
   const [comments, setcomments] = useState(null)
 
   useEffect(() => {
     getComments(id).then((res) => setcomments(res));
+    document.body.style.overflow = "hidden";
+    return () => document.body.style.overflow = "unset";
+
   }, [id])
+
+
 
 
   // if (!open) return null;
@@ -52,7 +64,7 @@ const ModalComments = ({history}) => {
                 <hr />
               </div>
             ))}
-          <button onClick={()=> history.goBack() }>close</button>
+          <button onClick={ back }>close</button>
         </div>
       </div>
     </>,

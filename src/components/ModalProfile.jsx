@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ReactDom from "react-dom";
-import "../styles/modalProfile.css"
+import { useHistory, useLocation } from "react-router-dom";
+import "../styles/modalProfile.css";
 
-const ModalProfile = ({ open, onClose, owner }) => {
+const ModalProfile = () => {
   const modalStyles = {
     position: "fixed",
     top: "50%",
@@ -24,9 +25,21 @@ const ModalProfile = ({ open, onClose, owner }) => {
     zIndex: 1000,
   };
 
-  // console.log(owner);
 
-  if (!open) return null;
+  const location = useLocation();
+  const { owner } = location.state;
+
+  const history = useHistory()
+  const back = e => {
+    e.stopPropagation();
+    history.goBack()
+  }
+
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => document.body.style.overflow = "unset";
+  }, [])
+
   return ReactDom.createPortal(
     <>
       <div style={overlayStyles}>
@@ -41,7 +54,7 @@ const ModalProfile = ({ open, onClose, owner }) => {
             </div>
           </div>
 
-          <button onClick={onClose}>Close model</button>
+          <button onClick={back}>Close model</button>
         </div>
       </div>
     </>,
