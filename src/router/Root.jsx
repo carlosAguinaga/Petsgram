@@ -4,6 +4,7 @@ import Home from "../components/Home";
 import ModalComments from "../components/ModalComments";
 import ModalProfile from "../components/ModalProfile";
 import Navbar from "../components/Navbar";
+import "../styles/navbar.css";
 
 const Root = () => {
   let location = useLocation();

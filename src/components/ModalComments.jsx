@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import ReactDom from "react-dom";
 import { useParams } from "react-router";
 import { getComments } from "../utils/getData";
-import "../styles/modalComments.css"
 import { useHistory } from "react-router-dom";
+import "../styles/modalComments.css"
 
 
 const ModalComments = () => {
@@ -13,7 +13,7 @@ const ModalComments = () => {
     left: "50%",
     transform: "translate(-50%, -50%)",
     backgroundColor: "#fff",
-    padding: "50px",
+    padding: "30px",
     zIndex: 1000,
   };
 
@@ -34,6 +34,10 @@ const ModalComments = () => {
     history.goBack()
   }
 
+  const otro = e => {
+    console.log("tambien");
+  }
+
 
   let { id } = useParams();
   const [comments, setcomments] = useState(null)
@@ -47,12 +51,10 @@ const ModalComments = () => {
 
 
 
-
-  // if (!open) return null;
   return ReactDom.createPortal(
     <>
-      <div style={overlayStyles}>
-        <div style={modalStyles}>
+      <div style={overlayStyles} onClick={back}>
+        <div style={modalStyles} onClick={e => e.stopPropagation()}>
           {comments &&
             comments.data.map((comment) => (
               <div key={comment.id}>
@@ -61,7 +63,6 @@ const ModalComments = () => {
                   <span>{comment.owner.firstName}:</span>
                   <span>{comment.message}</span>
                 </div>
-                <hr />
               </div>
             ))}
           <button onClick={ back }>close</button>

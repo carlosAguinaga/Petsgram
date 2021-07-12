@@ -10,7 +10,7 @@ const ModalProfile = () => {
     left: "50%",
     transform: "translate(-50%, -50%)",
     backgroundColor: "#fff",
-    padding: "50px",
+    padding: "30px",
     zIndex: 1000,
   };
 
@@ -42,12 +42,11 @@ const ModalProfile = () => {
 
   return ReactDom.createPortal(
     <>
-      <div style={overlayStyles}>
-        <span>temporal</span>
-        <div style={modalStyles}>
+      <div style={overlayStyles} onClick={back}>
+        <div style={modalStyles} onClick={e => e.stopPropagation()}>
           <div>
-            <div className="modal__profile">
-              <img src={owner.picture} alt="" className="post__modal--img" />
+            <div className="modal-profile__profile">
+              <img src={owner.picture} alt="" className="profilet__modal--img" />
               <span>{owner.firstName}:</span>
               <span>{owner.lastName}:</span>
               <span>{owner.email}</span>

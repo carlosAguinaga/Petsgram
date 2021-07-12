@@ -1,6 +1,7 @@
 .modal__comment {
     display: flex;
     align-items: center;
+    margin-bottom: 10px;
   }
 
   .post__modal--img {
@@ -8,10 +9,5 @@
     height: 30px;
     border-radius: 50%;
     margin-right: 10px;
-    margin-left: 20px;
   }
   
-  .modal__profile {
-    display: flex;
-    flex-direction: column;
-  }

@@ -1,9 +1,10 @@
-.modal__comment {
+/* .modal-profile__comment {
     display: flex;
     align-items: center;
-  }
+    background-color: red;
+  } */
 
-  .post__modal--img {
+  .profilet__modal--img {
     width: 30px;
     height: 30px;
     border-radius: 50%;
@@ -11,7 +12,7 @@
     margin-left: 20px;
   }
   
-  .modal__profile {
+  .modal-profile__profile {
     display: flex;
     flex-direction: column;
   }
