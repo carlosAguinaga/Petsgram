@@ -34,10 +34,6 @@ const ModalComments = () => {
     history.goBack()
   }
 
-  const otro = e => {
-    console.log("tambien");
-  }
-
 
   let { id } = useParams();
   const [comments, setcomments] = useState(null)
