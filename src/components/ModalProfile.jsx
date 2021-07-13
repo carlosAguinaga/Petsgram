@@ -25,35 +25,34 @@ const ModalProfile = () => {
     zIndex: 1000,
   };
 
-
   const location = useLocation();
   const { owner } = location.state;
 
-  const history = useHistory()
-  const back = e => {
+  const history = useHistory();
+  const back = (e) => {
     e.stopPropagation();
-    history.goBack()
-  }
+    history.goBack();
+  };
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
-    return () => document.body.style.overflow = "unset";
-  }, [])
+    return () => (document.body.style.overflow = "unset");
+  }, []);
 
   return ReactDom.createPortal(
     <>
       <div style={overlayStyles} onClick={back}>
-        <div style={modalStyles} onClick={e => e.stopPropagation()}>
-          <div>
-            <div className="modal-profile__profile">
-              <img src={owner.picture} alt="" className="profilet__modal--img" />
-              <span>{owner.firstName}:</span>
-              <span>{owner.lastName}:</span>
-              <span>{owner.email}</span>
-            </div>
+        <div style={modalStyles} onClick={(e) => e.stopPropagation()}>
+          <div className="modal-profile__container">
+            <img src={owner.picture} alt="" className="modal-profile__img" />
+            <span className="modal-profile__name">
+              {owner.firstName} {owner.lastName}
+            </span>
+            <span className="modal-profile__email">{owner.email}</span>
+            <button className="modal-profile__button" onClick={back}>
+              Close
+            </button>
           </div>
-
-          <button onClick={back}>Close model</button>
         </div>
       </div>
     </>,

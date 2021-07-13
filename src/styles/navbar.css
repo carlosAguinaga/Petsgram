@@ -11,6 +11,7 @@
     border-radius: 50%;
     width: 40px;
     padding: 1px;
+    cursor: pointer;
   }
   .NavBar_container .logo {
     width: 100px;

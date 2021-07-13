@@ -1,13 +1,35 @@
 
-  .profilet__modal--img {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    margin-right: 10px;
-    margin-left: 20px;
-  }
-  
-  .modal-profile__profile {
+
+  .modal-profile__container {
     display: flex;
     flex-direction: column;
+    align-items: center;
   }
+  .modal-profile__img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 5px;
+  }
+
+  .modal-profile__name {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 2px;
+  }
+  
+  .modal-profile__email {
+    font-size: 16px;
+    margin-bottom: 25px;
+  }
+
+  .modal-profile__button {
+    font-size: 18px;
+    color: white;
+    border-radius: 15px;
+    border: none;
+    padding: 10px 10px;
+    background-color: rgb(195, 195, 195);
+    cursor: pointer;
+  }
+
