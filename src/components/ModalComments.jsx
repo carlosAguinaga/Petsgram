@@ -19,11 +19,12 @@ const ModalComments = () => {
 
   const modalStyles = {
     position: "fixed",
+    minWidth: '300px',
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
     backgroundColor: "#fff",
-    padding: "30px",
+    padding: "20px",
     zIndex: 1000,
   };
 

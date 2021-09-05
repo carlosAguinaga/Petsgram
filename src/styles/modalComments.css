@@ -1,6 +1,6 @@
 .modal__comment {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     margin-bottom: 15px;
   }
 

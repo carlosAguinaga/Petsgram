@@ -8,6 +8,7 @@ const ModalProfile = () => {
     position: "fixed",
     top: "50%",
     left: "50%",
+    minWidth: '300px',
     transform: "translate(-50%, -50%)",
     backgroundColor: "#fff",
     padding: "30px",
